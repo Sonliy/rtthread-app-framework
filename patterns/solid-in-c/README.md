@@ -87,9 +87,6 @@ int msg_bus_send(module_id_e src, module_id_e dest, uint32_t msg_id, ...) {
 
 ---
 
-## 面试话术
-
-> "我做的 task_module_t 框架遵循 SOLID 五原则。加新模块只需要四行回调绑定，框架代码不动。dispatch/transition/state_handler 三层分离保证单一职责。msg_bus 里发送方不知道接收方的内部实现——这就是依赖倒置。"
 
 ## 参考资料
 
