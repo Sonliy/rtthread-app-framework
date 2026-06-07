@@ -13,11 +13,11 @@
 
 void platUartInit(int port, int baud, int bits, int stop, int parity) {
     (void)bits; (void)stop; (void)parity;
-    printf("[BSP] UART%d init: %d baud\r\n", port, baud);
+    printf("[BSP] UART%d init: %d baud\n", port, baud);
 }
 int  platUartWrite(int port, const uint8_t *data, int len) {
     (void)data;
-    printf("[BSP] UART%d TX %d bytes\r\n", port, len);
+    printf("[BSP] UART%d TX %d bytes\n", port, len);
     return len;
 }
 uint16_t uart_ring_rs485_read(uint8_t *dst, uint16_t max) { (void)dst; (void)max; return 0; }
@@ -148,11 +148,11 @@ static int com_pc_fsm_transition(task_module_t *module, uint32_t next_state)
         memset(ctx->rx_buf, 0, sizeof(ctx->rx_buf));
         ctx->rx_len = 0;
         ctx->idle_ticks = 0;
-        rt_kprintf("[COM_PC] → RECV state\r\n");
+        rt_kprintf("[COM_PC] → RECV state\n");
         break;
 
     case COM_PC_STATE_SEND:
-        rt_kprintf("[COM_PC] → SEND state\r\n");
+        rt_kprintf("[COM_PC] → SEND state\n");
         break;
 
     default:
@@ -173,16 +173,16 @@ static int com_pc_state_recv_handler(task_module_t *module, const msg_t *msg)
 
     case COM_PC_MSG_MODE_NORMAL:
         ctx->mode = COM_PC_MODE_NORMAL;
-        rt_kprintf("[COM_PC] MODE → NORMAL\r\n");
+        rt_kprintf("[COM_PC] MODE → NORMAL\n");
         return APP_EOK;
 
     case COM_PC_MSG_MODE_PASSTHROUGH:
         ctx->mode = COM_PC_MODE_PASSTHROUGH;
-        rt_kprintf("[COM_PC] MODE → PASSTHROUGH\r\n");
+        rt_kprintf("[COM_PC] MODE → PASSTHROUGH\n");
         return APP_EOK;
 
     case COM_PC_MSG_TEST_LOOPBACK:
-        rt_kprintf("[COM_PC] TEST → loopback test\r\n");
+        rt_kprintf("[COM_PC] TEST → loopback test\n");
         return APP_EOK;
 
     default:

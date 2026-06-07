@@ -91,11 +91,11 @@ static int led_fsm_transition(task_module_t *module, uint32_t next_state)
         ctx->is_on = 0;
         ctx->blink_interval_ms = 0;
         /* Drv_LED_off(); — 实际项目调用 BSP */
-        rt_kprintf("[LED] → NORMAL\r\n");
+        rt_kprintf("[LED] → NORMAL\n");
         break;
     case LED_FSM_FAULT:
         ctx->blink_interval_ms = 500; /* 告警闪烁 */
-        rt_kprintf("[LED] → FAULT\r\n");
+        rt_kprintf("[LED] → FAULT\n");
         break;
     default:
         break;
@@ -113,12 +113,12 @@ static int led_state_normal_handler(task_module_t *module, const msg_t *msg)
     case LED_MSG_RUN_ON:
         ctx->is_on = 1;
         ctx->blink_interval_ms = 0;
-        /* Drv_LED_on(); */ rt_kprintf("[LED] ON\r\n");
+        /* Drv_LED_on(); */ rt_kprintf("[LED] ON\n");
         return APP_EOK;
     case LED_MSG_RUN_OFF:
         ctx->is_on = 0;
         ctx->blink_interval_ms = 0;
-        /* Drv_LED_off(); */ rt_kprintf("[LED] OFF\r\n");
+        /* Drv_LED_off(); */ rt_kprintf("[LED] OFF\n");
         return APP_EOK;
     case LED_MSG_TEST_BLINK:
         ctx->blink_interval_ms = 200;
@@ -140,7 +140,7 @@ static void led_tick(task_module_t *module)
     {
         ctx->last_toggle_ms = now;
         ctx->is_on = !ctx->is_on;
-        rt_kprintf("[LED] %s\r\n", ctx->is_on ? "ON" : "OFF");
+        rt_kprintf("[LED] %s\n", ctx->is_on ? "ON" : "OFF");
     }
 }
 

@@ -10,7 +10,6 @@ typedef enum {
     MODULE_ID_STATE_MGR,
     MODULE_ID_LED,
     MODULE_ID_COM_PC,
-    MODULE_ID_SYNC_MGR,
     MODULE_ID_MAX,
 } module_id_e;
 
