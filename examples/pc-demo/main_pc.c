@@ -11,7 +11,6 @@
 #include "task_led.h"
 #include "task_com_pc.h"
 #include "task_com_dsp.h"
-#include "task_sync_manager.h"
 
 /* 模块入口声明 */
 extern void task_led_entry(void *param);
@@ -40,11 +39,7 @@ int main(void) {
                                                RT_NULL, 2048, 5, 10);
     printf("[APP] COM_DSP thread started\n");
 
-    /* 5. 启动 SyncManager 超时清淤 */
-    sync_manager_start(SYNC_TTL_DEFAULT_MS, SYNC_INTERVAL_DEFAULT_MS);
-    printf("[APP] SyncManager started\n");
-
-    /* 6. 等待几秒让各模块输出日志 */
+    /* 5. 等待几秒让各模块输出日志 */
     rt_thread_mdelay(5000);
 
     printf("\n=== Demo Finished ===\n");
