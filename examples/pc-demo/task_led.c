@@ -176,4 +176,7 @@ static int led_module_init(task_module_t *module)
     return APP_EOK;
 }
 
-void task_led_entry(void *param) { module_thread_entry(&g_led_module.base); }
+void task_led_entry(void *param)
+{
+    module_thread_entry(&g_led_module.base);
+}
